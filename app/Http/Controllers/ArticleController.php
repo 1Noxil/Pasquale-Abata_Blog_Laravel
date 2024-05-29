@@ -31,9 +31,9 @@ class ArticleController extends Controller
     public function store(StoreArticleRequest $request)
     {
         $path_image = '';
-        if ($request->hasFile('image')) {
-            $file_name = $request->file('image')->getClientOriginalName();
-            $path_image = $request->file('image')->storeAs('public/articles/images', $file_name);
+        if ($request->hasFile('images')) {
+            $file_name = $request->file('images')->getClientOriginalName();
+            $path_image = $request->file('images')->storeAs('public/img/articles', $file_name);
         }
 
         Article::create([
@@ -41,10 +41,10 @@ class ArticleController extends Controller
             'titles'=> $request->titles,
             'categorys'=>$request->categorys,
             'txt_articles'=>$request->txt_articles,
-            'images'=>$request->$path_image
+            'images'=>$path_image,
         ]);
         session()->flash('success', 'Articolo creato con successo');
-        redirect()->route('articles.index');
+        return redirect()->route('articles.index');
     }
 
     /**
@@ -68,20 +68,20 @@ class ArticleController extends Controller
      */
     public function update(UpdateArticleRequest $request, Article $article)
     {
-        $path_image = $request->images;
-        if ($request->hasFile('image')) {
-            $file_name = $request->file('image')->getClientOriginalName();
-            $path_image = $request->file('image')->storeAs('public/articles/images', $file_name);
+        $path_image = $article->images;
+        if ($request->hasFile('images')) {
+            $file_name = $request->file('images')->getClientOriginalName();
+            $path_image = $request->file('images')->storeAs('public/img/articles', $file_name);
         }
             $article->update([
                 'authors'=> $request->authors,
                 'titles'=> $request->titles,
                 'categorys'=>$request->categorys,
                 'txt_articles'=>$request->txt_articles,
-                'images'=>$request->$path_image
+                'images'=>$path_image,
             ]);
             session()->flash('success', "L'articolo è stato aggiornato con successo");
-            redirect()->route('articles.index');
+            return redirect()->route('articles.index');
     }
 
     /**
@@ -91,6 +91,6 @@ class ArticleController extends Controller
     {
         $article->delete();
         session()->flash('success', "L'articolo è cancellato con successo");
-        redirect()->route('articles.index');
+        return redirect()->route('articles.index');
     }
 }

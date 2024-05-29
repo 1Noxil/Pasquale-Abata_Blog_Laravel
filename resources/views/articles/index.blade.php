@@ -38,7 +38,9 @@
                                 src="{{Storage::url($article->images)}}"
                                 alt="..." />
                         </td>
-                        <td>{{$article->name}}</td>
+                        <td>{{$article->authors}}</td>
+                        <td>{{$article->titles}}</td>
+                        <td>{{$article->categorys}}</td>
                         <td>
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                                 <a href="{{route('articles.show',compact('article'))}}"
@@ -64,22 +66,24 @@
 </main>
 {{-- MODAL ELIMINA --}}
 <!-- Modal -->
-{{-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+@if ($articles)
+ <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog">
   <div class="modal-content">
     <div class="modal-header">
-      <h1 class="modal-title fs-5" id="exampleModalLabel">Vuoi eliminare {{$article->titles}}?</h1>
-      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Vuoi eliminare {{$article->titles}}?</h1>               
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
     <div class="modal-body d-flex justify-content-center">
-        <form action="{{route('articles.delete',compact('article'))}}" method="post">
+        <form action="{{route('articles.destroy',compact('article'))}}" method="post">
             @csrf
             @method('DELETE')
             <button type="submit" class="btn btn-success mx-4 px-3"><i class="fa-solid fa-check"></i>SI</button>
         </form>
         <button type="button" class="btn btn-danger mx-4" data-bs-dismiss="modal"><i class="fa-solid fa-xmark"></i>NO</button>
     </div>
-  </div>
 </div>
-</div> --}}
+</div>
+</div>
+@endif
 </x-layout>

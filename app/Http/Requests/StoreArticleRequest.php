@@ -11,7 +11,7 @@ class StoreArticleRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,7 +25,7 @@ class StoreArticleRequest extends FormRequest
             'authors' => 'string||required',
             'titles' => 'string||required',
             'categorys' => 'string||required',
-            'txt_articles' =>'string||required||mimes:256',
+            'txt_articles' =>'string||required',
         ];
     }
 
@@ -36,7 +36,6 @@ class StoreArticleRequest extends FormRequest
             'titles.required' => "Il titolo è obbligatorio",
             'categorys.required'=> "La categoria è obbligatoria",
             'txt_article.required'=> "Il testo dell'articolo è obbligatorio",
-            'txt_article.mimens' => "L'articolo deve essere minimo di 256 caratteri",
         ];
     }
 }
