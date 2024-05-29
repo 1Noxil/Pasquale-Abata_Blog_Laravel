@@ -3,7 +3,7 @@
         <div class="row justify-content-center">
             <div class="col-12 col-md-8">
 
-                <form class="p-5 border rounded form__custom" action="{{route('register')}}" method="POST">
+                <form class="shadow-sm p-5 border rounded form__custom" action="{{route('register')}}" method="POST">
                     @csrf
                     <div class="mb-3 form__group field">
                         <input type="text" name="name" placeholder="Username" class="form__field" id="name" value="{{old('name')}}">
@@ -34,10 +34,10 @@
 
                     <div class="d-flex justify-content-end pt-3">
                         <button type="submit" class="button">Registrati</button>
-                        <a href="{{route('login')}}" class="ms-3">
-                            <button class="button py-2">Già registrato?</button>
-                        </a>
                     </div>
+                    <a href="{{route('login')}}" class="mt-3 text-black">
+                        Già registrato?
+                    </a>
                 </form>
             </div>
         </div>

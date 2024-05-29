@@ -1,8 +1,8 @@
 <x-layout>
-    <div class="container mt-5 pt-5 vh-100 ">
+    <div class="container mt-5 pt-5 vh-100">
         <div class="row justify-content-center">
             <div class="col-12 col-md-8">
-                <form class="p-5 border rounded form__custom" action="{{route('login')}}"
+                <form class="shadow-sm p-5 border rounded form__custom" action="{{route('login')}}"
                     method="POST">
                 @csrf
                     <div class="form__group field mb-3">
@@ -23,10 +23,10 @@
                     @enderror
                     <div class="d-flex justify-content-end pt-3">
                         <button type="submit" class="button">Accedi</button>
-                        <a href="{{route('register')}}" class="ms-3">
-                            <button class="button py-2">Non sei registrato?</button>
-                        </a>
                     </div>
+                    <a href="{{route('register')}}" class="mt-3 text-black">
+                        Non sei registrato?
+                    </a>
                 </form>
             </div>
         </div>

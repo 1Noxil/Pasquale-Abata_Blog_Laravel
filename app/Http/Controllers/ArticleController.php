@@ -35,12 +35,17 @@ class ArticleController extends Controller
             $file_name = $request->file('images')->getClientOriginalName();
             $path_image = $request->file('images')->storeAs('public/img/articles', $file_name);
         }
+        $path_txt = '';
+        if ($request->hasFile('txt_articles')) {
+            $file_name = $request->file('txt_articles')->getClientOriginalName();
+            $path_txt = $request->file('txt_articles')->storeAs('public/txt', $file_name);
+        }
 
         Article::create([
             'authors'=> $request->authors,
             'titles'=> $request->titles,
             'categorys'=>$request->categorys,
-            'txt_articles'=>$request->txt_articles,
+            'txt_articles'=>$path_txt,
             'images'=>$path_image,
         ]);
         session()->flash('success', 'Articolo creato con successo');

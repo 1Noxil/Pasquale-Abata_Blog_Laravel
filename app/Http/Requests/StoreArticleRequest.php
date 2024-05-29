@@ -25,7 +25,7 @@ class StoreArticleRequest extends FormRequest
             'authors' => 'string||required',
             'titles' => 'string||required',
             'categorys' => 'string||required',
-            'txt_articles' =>'string||required',
+            'txt_articles' =>'required',
         ];
     }
 

@@ -15,19 +15,17 @@
 /* NAVBAR */
 .custom_navbar{
     background-color: var(--Black);
-    color: var(--White);
+    color: var(--White); 
 }
 .navbar-collapse{
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
 }
 .custom_navbar .nav_social li{
     margin: 0 5px 0 5px;
     font-size: 1.2rem;
 }
-.nav_social li i{
-    transition: 200ms;
-}
+
 .nav_social li i:hover, .nav-link:hover,.active{
     color: var(--Red) !important; 
     cursor: pointer;
@@ -40,47 +38,52 @@
 }
 
 /* Button */
-.button {
-    padding: 5px 5px;
-    border: none;
-    border-radius: 5px;
-    font-weight: bold;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    cursor: pointer;
-    color: var(--Red);
-    background-color: transparent;
-    transition: all 1000ms;
-    font-size: 10px;
-    position: relative;
-    overflow: hidden;
-    outline: 2px solid var(--Red);
-  }
-  
-  .button:hover {
-    color: #ffffff;
-    transform: scale(1.1);
-    outline: 2px solid var(--Red);
-    box-shadow: 4px 5px 17px -4px var(--Red);
-  }
-  
-  .button::before {
-    content: "";
-    position: absolute;
-    left: -50px;
-    top: 0;
-    width: 0;
-    height: 100%;
-    background-color: var(--Red);
-    transform: skewX(45deg);
-    z-index: -1;
-    transition: width 1000ms;
-  }
-  
-  .button:hover::before {
-    width: 250%;
-  }
+button {
+  background-color: transparent;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  display: inline-block;
+  text-align: center;
+  font-weight: bold;
+  padding: 0.7em 2em;
+  border: 3px solid var(--Red);
+  border-radius: 1px;
+  position: relative;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.1);
+  color: var(--Red);
+  text-decoration: none;
+  transition: 0.3s ease all;
+  z-index: 1;
+}
 
+button:before {
+  transition: 0.5s all ease;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  right: 50%;
+  bottom: 0;
+  opacity: 0;
+  content: '';
+  background-color: var(--Red);
+  z-index: -1;
+}
+
+button:hover, button:focus {
+  color: white;
+}
+
+button:hover:before, button:focus:before {
+  transition: 0.5s all ease;
+  left: 0;
+  right: 0;
+  opacity: 1;
+}
+
+button:active {
+  transform: scale(0.9);
+}
   /* login/register */
   .form__custom{
     display: flex;
@@ -150,8 +153,15 @@
     box-shadow: none;
   }
 
+/* SHOW ARTICLE */
+.img__show{
+  max-width: 28rem;
+}
 .txt__custom{
-  width: max-content ;
+  text-align: center;
+}
+.txt__custom iframe{
+  font-size: large;
 }
   
   

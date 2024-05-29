@@ -3,9 +3,9 @@
         <div class="row">
             <x-backbutton />
             <div class="col-12">
-                <div class="row">
-                    <div class="col-6">
-                        <img class="img-fluid" src="{{Storage::url($article->images)}}" alt="">
+                <div class="row ">
+                    <div class="col-6 justify-content-center d-flex">
+                        <img class="img-fluid img__show" src="{{Storage::url($article->images)}}" alt="">
                     </div>
                     <div class="col-6 d-flex flex-column justify-content-center">
                         <div class="ms-5">
@@ -23,7 +23,7 @@
                     </div>
                     <div class="col-12 txt__custom">
                         <p class="bolder">
-                            {{$article->txt_articles}}
+                            <iframe src="{{Storage::url($article->txt_articles)}}" frameborder="0"></iframe>
                         </p>
                     </div>
                 </div>

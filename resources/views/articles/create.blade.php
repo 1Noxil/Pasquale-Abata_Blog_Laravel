@@ -32,8 +32,7 @@
                     <p class="text-danger"> {{ $message }} </p>
                     @enderror
                     <div class="form-floating mb-3">
-                        <textarea class="form-control p-5" id="txt_articles"
-                        name="txt_articles">{{old('txt_articles')}}"</textarea>
+                        <input class="form-control p-5" id="txt_articles" type="file" name="txt_articles">
                         <label for="txt_articles">Testo Articolo</label>
                     </div>
                     @error('txt_articles')
