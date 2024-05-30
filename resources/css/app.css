@@ -1,4 +1,6 @@
 @import 'bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import 'boxicons';
 
 
 :root{
@@ -7,8 +9,8 @@
     --Red: #C81919;
 }
 
-.txt_white{
-    color:var(--White);
+.txt_gray{
+    color:rgb(158, 157, 157);
 }
 
 body{
@@ -22,6 +24,7 @@ body{
 /* NAVBAR */
 .custom_navbar{
     color: var(--White); 
+    font-family: "Montserrat", sans-serif;
 }
 .navbar-collapse{
   display: flex;
@@ -31,7 +34,9 @@ body{
     margin: 0 5px 0 5px;
     font-size: 1.2rem;
 }
-
+.nav_social li i{
+  transition: 200ms;
+}
 .nav_social li i:hover, .nav-link:hover,.active{
     color: var(--Red) !important; 
     cursor: pointer;
@@ -42,7 +47,22 @@ body{
 .hamburger-ico{
   color: var(--White) !important;
 }
+.bx{
+  color: rgb(158, 157, 157);
+  font-size: 1.5rem;
+}
 /* card */
+.score{
+  font-family: "Montserrat", sans-serif;
+}
+.score::before{
+  content: "";
+  width: 50px;
+  height: 3px;
+  display: inline-block;
+  background: var(--Red);
+  margin: 4px 10px;
+}
 .card{
  min-height: 100%;
 }

@@ -21,6 +21,10 @@ class ArticleController extends Controller
         return view('articles.index',compact('articles'));
     }
 
+    public function dashboard()
+    {
+        return view('articles.dashboard');
+    }
     /**
      * Show the form for creating a new resource.
      */
