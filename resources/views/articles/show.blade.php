@@ -5,25 +5,25 @@
             <div class="col-12">
                 <div class="row ">
                     <div class="col-6 justify-content-center d-flex">
-                        <img class="img-fluid img__show" src="{{Storage::url($article->images)}}" alt="">
+                        <img class="img-fluid img__show" src="{{Storage::url($article->image)}}" alt="">
                     </div>
                     <div class="col-6 d-flex flex-column justify-content-center">
                         <div class="ms-5">
                             <h4 class="bolder">AUTORE</h4>
-                            <p>{{$article->authors}}</p>
+                            <p>{{$article->user_id}}</p>
                         </div>
                         <div class="ms-5">
                             <h4 class="bolder">TITOLO</h4>
-                            <p>{{$article->titles}}</p>
+                            <p>{{$article->title}}</p>
                         </div>
                         <div class="ms-5">
                             <h4 class="bolder">CATEGORIA</h4>
-                            <p>{{$article->categorys}}</p>
+                            <p>{{$article->category}}</p>
                         </div>
                     </div>
                     <div class="col-12 txt__custom">
                         <p class="bolder">
-                            <iframe src="{{Storage::url($article->txt_articles)}}" frameborder="0"></iframe>
+                            {{$article->body}}
                         </p>
                     </div>
                 </div>

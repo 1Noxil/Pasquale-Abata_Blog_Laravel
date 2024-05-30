@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Article;
 use App\Http\Requests\StoreArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
+use App\Mail\CreateArticleMail;
+use App\Mail\UpdateArticleMail;
+use Illuminate\Support\Facades\Mail;
+
 
 class ArticleController extends Controller
 {
@@ -31,23 +35,22 @@ class ArticleController extends Controller
     public function store(StoreArticleRequest $request)
     {
         $path_image = '';
-        if ($request->hasFile('images')) {
-            $file_name = $request->file('images')->getClientOriginalName();
-            $path_image = $request->file('images')->storeAs('public/img/articles', $file_name);
-        }
-        $path_txt = '';
-        if ($request->hasFile('txt_articles')) {
-            $file_name = $request->file('txt_articles')->getClientOriginalName();
-            $path_txt = $request->file('txt_articles')->storeAs('public/txt', $file_name);
+        if ($request->hasFile('image')) {
+            $file_name = $request->file('image')->getClientOriginalName();
+            $path_image = $request->file('image')->storeAs('public/img/articles', $file_name);
         }
 
-        Article::create([
-            'authors'=> $request->authors,
-            'titles'=> $request->titles,
-            'categorys'=>$request->categorys,
-            'txt_articles'=>$path_txt,
-            'images'=>$path_image,
+        $article = Article::create([
+            "title" => $request->title,
+            'category' => $request->category,
+            "body" =>  $request->body,
+            "status" =>  $request->status,
+            'user_id' => auth()->user()->name,
+            'slug' => str()->slug($request->title, '-'),
+            'image' => $path_image
         ]);
+
+        Mail::to(auth()->user()->email)->send(new CreateArticleMail($article));
         session()->flash('success', 'Articolo creato con successo');
         return redirect()->route('articles.index');
     }
@@ -74,17 +77,18 @@ class ArticleController extends Controller
     public function update(UpdateArticleRequest $request, Article $article)
     {
         $path_image = $article->images;
-        if ($request->hasFile('images')) {
-            $file_name = $request->file('images')->getClientOriginalName();
-            $path_image = $request->file('images')->storeAs('public/img/articles', $file_name);
+        if ($request->hasFile('image')) {
+            $file_name = $request->file('image')->getClientOriginalName();
+            $path_image = $request->file('image')->storeAs('public/img/articles', $file_name);
         }
             $article->update([
-                'authors'=> $request->authors,
-                'titles'=> $request->titles,
-                'categorys'=>$request->categorys,
-                'txt_articles'=>$request->txt_articles,
-                'images'=>$path_image,
+                "title" => $request->title,
+                'category' => $request->category,
+                "body" =>  $request->body,
+                "status" =>  $request->status,
+                'image' => $path_image
             ]);
+            Mail::to(auth()->user()->email)->send(new UpdateArticleMail($article));
             session()->flash('success', "L'articolo è stato aggiornato con successo");
             return redirect()->route('articles.index');
     }

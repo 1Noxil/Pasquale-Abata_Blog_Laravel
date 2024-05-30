@@ -1,46 +1,49 @@
 <x-layout>
     <div class="container-fluid px-4 px-md-5 mt-5 pt-5">
         <div class="row gx-5 justify-content-center ">
+            <div class="col-12">
+                <x-backbutton />
+            </div>
             <div class="col-12 text-center mb-3">
                 <h3> Crea un nuovo Articolo</h3>
             </div>
             <div class="col-lg-8 col-xl-6 border p-5 rounded">
                 <form action="{{route('articles.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
+                    
                     <div class="form-floating mb-3">
-                        <input class="form-control" id="authors" value="{{old('authors')}}"
-                        name="authors" type="text">
-                        <label for="authors">Autore</label>
+                        <input class="form-control" id="title" value="{{old('title')}}"
+                        name="title" type="text">
+                        <label for="title">Titolo</label>
                     </div>
-                    @error('authors')
+                    @error('title')
                     <p class="text-danger"> {{ $message }} </p>
                     @enderror
                     <div class="form-floating mb-3">
-                        <input class="form-control" id="titles" value="{{old('titles')}}"
-                        name="titles" type="text">
-                        <label for="titles">Titolo</label>
+                        <input class="form-control" id="category" value="{{old('category')}}"
+                        name="category" type="text">
+                        <label for="category">Categoria</label>
                     </div>
-                    @error('titles')
+                    @error('category')
                     <p class="text-danger"> {{ $message }} </p>
                     @enderror
                     <div class="form-floating mb-3">
-                        <input class="form-control" id="categorys" value="{{old('categorys')}}"
-                        name="categorys" type="text">
-                        <label for="categorys">Categoria</label>
+                        <textarea class="form-control p-5" id="body"
+                        name="body">{{old('body')}}</textarea>
+                        <label for="body">Testo Articolo</label>
                     </div>
-                    @error('categorys')
-                    <p class="text-danger"> {{ $message }} </p>
-                    @enderror
-                    <div class="form-floating mb-3">
-                        <input class="form-control p-5" id="txt_articles" type="file" name="txt_articles">
-                        <label for="txt_articles">Testo Articolo</label>
-                    </div>
-                    @error('txt_articles')
+                    @error('body')
                     <p class="text-danger"> {{ $message }} </p>
                     @enderror
                     <div class="form-floating mb-3">
                         <img width="200" src="" class="img-responsive">
-                        <input class="form-control" id="images" name="images" value type="file">
+                        <input class="form-control" id="image" name="image" value type="file">
+                    </div>
+                    <div class=" mb-3">
+                        <input type="radio" name="status" value="0">
+                        <label>Non Attivo</label><br>
+                        <input type="radio" name="status" value="1">
+                        <label>Attivo</label><br>
                     </div>
                     <div class="d-grid">
                         <button class="btn btn-primary btn-lg"

@@ -13,3 +13,5 @@ hide_pass_wrap.addEventListener('click', function() {
        hide_pass_wrap.innerHTML = '<i class="hide_pass fa-regular fa-eye-slash"></i>';
    };
 })
+
+/* navbar verticale */

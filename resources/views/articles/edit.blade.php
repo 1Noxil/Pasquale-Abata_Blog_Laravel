@@ -9,40 +9,38 @@
                     @csrf
                     @method('PUT')
                     <div class="form-floating mb-3">
-                        <input class="form-control" id="authors" value="{{$article->authors}}"
-                        name="authors" type="text">
-                        <label for="authors">Autore</label>
+                        <input class="form-control" id="title" value="{{$article->title}}"
+                        name="title" type="text">
+                        <label for="title">Titolo</label>
                     </div>
-                    @error('authors')
+                    @error('title')
                     <p class="text-danger"> {{ $message }} </p>
                     @enderror
                     <div class="form-floating mb-3">
-                        <input class="form-control" id="titles" value="{{$article->titles}}"
-                        name="titles" type="text">
-                        <label for="titles">Titolo</label>
+                        <input class="form-control" id="category" value="{{$article->category}}"
+                        name="category" type="text">
+                        <label for="category">Categoria</label>
                     </div>
-                    @error('titles')
+                    @error('category')
                     <p class="text-danger"> {{ $message }} </p>
                     @enderror
                     <div class="form-floating mb-3">
-                        <input class="form-control" id="categorys" value="{{$article->categorys}}"
-                        name="categorys" type="text">
-                        <label for="categorys">Categoria</label>
+                        <textarea class="form-control p-5" id="body"
+                        name="body">{{$article->body}}"</textarea>
+                        <label for="body">Testo Articolo</label>
                     </div>
-                    @error('categorys')
+                    @error('body')
                     <p class="text-danger"> {{ $message }} </p>
                     @enderror
                     <div class="form-floating mb-3">
-                        <textarea class="form-control p-5" id="txt_articles"
-                        name="txt_articles">{{$article->txt_articles}}"</textarea>
-                        <label for="txt_articles">Testo Articolo</label>
+                        <img width="200" src="{{Storage::url($article->image)}}" class="img-responsive">
+                        <input class="form-control" id="image" name="image" value type="file">
                     </div>
-                    @error('txt_articles')
-                    <p class="text-danger"> {{ $message }} </p>
-                    @enderror
-                    <div class="form-floating mb-3">
-                        <img width="200" src="{{Storage::url($article->images)}}" class="img-responsive">
-                        <input class="form-control" id="images" name="images" value type="file">
+                    <div class=" mb-3">
+                        <input type="radio" name="status" value="0" @checked(!$article->status)>
+                        <label>Non Attivo</label><br>
+                        <input type="radio" name="status" value="1" @checked($article->status)>
+                        <label>Attivo</label><br>
                     </div>
                     <div class="d-grid">
                         <button class="btn btn-primary btn-lg"

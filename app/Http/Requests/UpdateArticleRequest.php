@@ -22,7 +22,18 @@ class UpdateArticleRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => 'required',
+            'category' => 'string||required',
+            'body' => 'required',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'title.required' => "Il titolo è obbligatorio",
+            'category.required'=> "La categoria è obbligatoria",
+            'body.require'=> "L'articolo è obbligatorio"
         ];
     }
 }

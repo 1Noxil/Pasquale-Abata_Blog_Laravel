@@ -8,7 +8,10 @@
   </head>
   <body>
     <x-navbar />
-    {{$slot}}
+    <div class="page-content">
+      {{$slot}}
+    </div>
+    <x-footer />
   </body>
   <script src="https://kit.fontawesome.com/c3880884f6.js" crossorigin="anonymous"></script>
 </html>

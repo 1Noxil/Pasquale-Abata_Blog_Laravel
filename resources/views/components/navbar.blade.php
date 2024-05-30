@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg custom_navbar">
+<nav class="navbar navbar-expand-lg custom_navbar bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="">
         <img class="img-fluid" src="{{asset('img/logo.png')}}" alt="">
@@ -12,16 +12,13 @@
             <a class="nav-link txt_white" href="{{route('homepage')}}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link txt_white" href="">Contatti</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link txt_white " href="">Servizi Offerti</a>
+            <a class="nav-link txt_white" href="{{route('blog.blog')}}">Blog</a>
           </li>
         </ul>
         <ul class="navbar-nav ms-lg-auto mb-2 mb-lg-0 nav_social">
           @auth
-          <li>
-            <p>Benvenuto,{{Auth::user()->name}}</p>
+          <li class="d-flex align-items-center">
+            <p class="txt_white mb-0">Benvenuto,{{Auth::user()->name}}</p>
           </li>
           <li>
             <a href="{{route('articles.index')}}">

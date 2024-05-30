@@ -35,12 +35,12 @@
                         <th scope="row">#{{$article->id}}</th>
                         <td>
                             <img class="card-img-top" style="width:3rem"
-                                src="{{Storage::url($article->images)}}"
+                                src="{{Storage::url($article->image)}}"
                                 alt="..." />
                         </td>
-                        <td>{{$article->authors}}</td>
-                        <td>{{$article->titles}}</td>
-                        <td>{{$article->categorys}}</td>
+                        <td>{{$article->user_id}}</td>
+                        <td>{{$article->title}}</td>
+                        <td>{{$article->category}}</td>
                         <td>
                             <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                                 <a href="{{route('articles.show',compact('article'))}}"
@@ -51,7 +51,7 @@
                                     class="btn btn-warning me-md-2">
                                     Modifica
                                 </a>
-                                    <button type="submit" class="btn btn-danger me-md-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Elimina</button>
+                                    <a type="submit" class="btn btn-danger me-md-2" data-bs-toggle="modal" data-bs-target="#exampleModal">Elimina</a>
                             </div>
                         </td>
                     </tr>
@@ -66,12 +66,12 @@
 </main>
 {{-- MODAL ELIMINA --}}
 <!-- Modal -->
-@if ($articles)
+@isset ($article)
  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog">
   <div class="modal-content">
     <div class="modal-header">
-        <h1 class="modal-title fs-5" id="exampleModalLabel">Vuoi eliminare {{$article->titles}}?</h1>               
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Vuoi eliminare {{$article->title}}?</h1>               
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
     </div>
     <div class="modal-body d-flex justify-content-center">
@@ -85,5 +85,5 @@
 </div>
 </div>
 </div>
-@endif
+@endisset
 </x-layout>

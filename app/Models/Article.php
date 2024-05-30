@@ -8,5 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Article extends Model
 {
     use HasFactory;
-    protected $fillable = ['authors','titles','categorys','txt_articles','images']; 
+    protected $fillable = ['title', 'slug', 'body', 'image', 'user_id', 'status','category']; 
+
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+     
+
 }

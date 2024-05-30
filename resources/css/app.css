@@ -11,10 +11,16 @@
     color:var(--White);
 }
 
+body{
+  background-color: var(--White);
+}
+.page-content{
+  min-height: 100vh;
+}
+
 
 /* NAVBAR */
 .custom_navbar{
-    background-color: var(--Black);
     color: var(--White); 
 }
 .navbar-collapse{
@@ -36,9 +42,13 @@
 .hamburger-ico{
   color: var(--White) !important;
 }
+/* card */
+.card{
+ min-height: 100%;
+}
 
 /* Button */
-button {
+.button {
   background-color: transparent;
   font-size: 12px;
   letter-spacing: 2px;
@@ -57,7 +67,7 @@ button {
   z-index: 1;
 }
 
-button:before {
+.button:before {
   transition: 0.5s all ease;
   position: absolute;
   top: 0;
@@ -70,18 +80,18 @@ button:before {
   z-index: -1;
 }
 
-button:hover, button:focus {
+.button:hover, .button:focus {
   color: white;
 }
 
-button:hover:before, button:focus:before {
+.button:hover:before, .button:focus:before {
   transition: 0.5s all ease;
   left: 0;
   right: 0;
   opacity: 1;
 }
 
-button:active {
+.button:active {
   transform: scale(0.9);
 }
   /* login/register */

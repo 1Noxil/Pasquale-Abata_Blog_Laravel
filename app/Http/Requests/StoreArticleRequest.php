@@ -22,20 +22,18 @@ class StoreArticleRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'authors' => 'string||required',
-            'titles' => 'string||required',
-            'categorys' => 'string||required',
-            'txt_articles' =>'required',
+            'title' => 'required',
+            'category' => 'string||required',
+            'body' => 'required',
         ];
     }
 
     public function messages()
     {
         return [
-            'authors.required' => "L'autore è obbligatorio",
-            'titles.required' => "Il titolo è obbligatorio",
-            'categorys.required'=> "La categoria è obbligatoria",
-            'txt_article.required'=> "Il testo dell'articolo è obbligatorio",
+            'title.required' => "Il titolo è obbligatorio",
+            'category.required'=> "La categoria è obbligatoria",
+            'body.require'=> "L'articolo è obbligatorio"
         ];
     }
 }
