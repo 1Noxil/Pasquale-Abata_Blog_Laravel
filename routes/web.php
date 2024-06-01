@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\AuthorController;
 use App\Http\Controllers\PublicController;
 use App\Models\Article;
 use Illuminate\Support\Facades\Route;
@@ -11,4 +12,6 @@ Route::get('/blog/{article}',[PublicController::class,'show'])->name('blog.show'
 Route::middleware(['auth'])->group(function(){
     Route::resource('articles', ArticleController::class);
     Route::get('/article/dashoard',[ArticleController::class,'dashboard'])->name('articles.dashboard');
+    Route::get('/authors',[AuthorController::class,'index'])->name('authors.index');
+    Route::get('/authors/{user}',[AuthorController::class,'show'])->name('authors.show');
 });

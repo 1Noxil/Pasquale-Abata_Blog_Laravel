@@ -36,8 +36,10 @@
                     class="h-100 p-5  border rounded-3">
                     <h2>Gestione Autori</h2>
                     
-                    <button class="btn btn-outline-secondary"
-                    type="button">Vedi categorie</button>
+                    <a href="{{route('authors.index')}}">
+                        <button class="btn btn-outline-secondary"
+                        type="button">Vedi Autori</button>
+                    </a>
                 </div>
             </div>
         </div>

@@ -11,7 +11,7 @@
                     <div class="d-flex align-items-center">
                         <img class="rounded-circle me-3" src="https://dummyimage.com/40x40/ced4da/6c757d" alt="...">
                         <div class="small">
-                            <div class="fw-bold">{{$article->user_id}}</div>
+                            <div class="fw-bold">{{$article->user->name}}</div>
                             <div class="text-muted">{{$article->timestamp}}</div>
                         </div>
                     </div>

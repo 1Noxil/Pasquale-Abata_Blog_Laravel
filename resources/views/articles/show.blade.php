@@ -10,7 +10,7 @@
                     <div class="col-6 d-flex flex-column justify-content-center">
                         <div class="ms-5">
                             <h4 class="bolder">AUTORE</h4>
-                            <p>{{$article->user_id}}</p>
+                            <p>{{$article->user->name}}</p>
                         </div>
                         <div class="ms-5">
                             <h4 class="bolder">TITOLO</h4>

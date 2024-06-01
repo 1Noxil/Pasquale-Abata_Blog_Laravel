@@ -7,6 +7,7 @@ use App\Http\Requests\StoreArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
 use App\Mail\CreateArticleMail;
 use App\Mail\UpdateArticleMail;
+use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 
 
@@ -49,7 +50,7 @@ class ArticleController extends Controller
             'category' => $request->category,
             "body" =>  $request->body,
             "status" =>  $request->status,
-            'user_id' => auth()->user()->name,
+            'user_id' => auth()->user()->id,
             'slug' => str()->slug($request->title, '-'),
             'image' => $path_image
         ]);
@@ -72,7 +73,8 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
-        return view('articles.edit', compact('article'));
+        $users = User::all();
+        return view('articles.edit', compact('users','article'));
     }
 
     /**
@@ -89,6 +91,7 @@ class ArticleController extends Controller
                 "title" => $request->title,
                 'category' => $request->category,
                 "body" =>  $request->body,
+                'user_id' => $request->user_id,
                 "status" =>  $request->status,
                 'image' => $path_image
             ]);

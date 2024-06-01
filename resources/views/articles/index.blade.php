@@ -38,7 +38,7 @@
                                 src="{{Storage::url($article->image)}}"
                                 alt="..." />
                         </td>
-                        <td>{{$article->user_id}}</td>
+                        <td>{{$article->user->name}}</td>
                         <td>{{$article->title}}</td>
                         <td>{{$article->category}}</td>
                         <td>

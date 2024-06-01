@@ -33,6 +33,14 @@
                     <p class="text-danger"> {{ $message }} </p>
                     @enderror
                     <div class="form-floating mb-3">
+                        <select class="form-select"name="user_id" id="user_id" aria-label="Floating label select example">
+                          @foreach ($users as $user)
+                          <option value="{{$user->id}}">{{$user->name}}</option>     
+                          @endforeach 
+                        </select>
+                        <label for="user_id">Seleziona Autore</label>
+                      </div>
+                    <div class="form-floating mb-3">
                         <img width="200" src="{{Storage::url($article->image)}}" class="img-responsive">
                         <input class="form-control" id="image" name="image" value type="file">
                     </div>
