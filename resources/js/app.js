@@ -2,17 +2,18 @@ import 'boxicons';
 import './bootstrap';
 import 'bootstrap';
 
-let input_password = document.querySelector('#input_password');
-let hide_pass_wrap = document.querySelector('.hide_pass_wrap');
+/* hide password button */
 
-hide_pass_wrap.addEventListener('click', function() {
-   if(input_password.type === 'password'){
-       input_password.type = 'text';
-       hide_pass_wrap.innerHTML = '<i class="hide_pass fa-regular fa-eye"></i>';
-   } else{
-       input_password.type = 'password';
-       hide_pass_wrap.innerHTML = '<i class="hide_pass fa-regular fa-eye-slash"></i>';
-   };
-})
+let password_hide_wrap = document.querySelector('#password-hide-wrap');
+let password = document.querySelector('#password');
 
-/* navbar verticale */
+password_hide_wrap.addEventListener('click', function(){
+    if(password.type === 'password'){
+        password.type = 'text';
+        password_hide_wrap.innerHTML = '<i class="bi bi-eye"></i>';
+    } else{
+        password.type = 'password';
+        password_hide_wrap.innerHTML = '<i class="bi bi-eye-slash"></i>';
+    };
+});
+

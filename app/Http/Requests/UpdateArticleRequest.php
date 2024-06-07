@@ -23,7 +23,6 @@ class UpdateArticleRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'category' => 'string||required',
             'body' => 'required',
         ];
     }
@@ -32,7 +31,6 @@ class UpdateArticleRequest extends FormRequest
     {
         return [
             'title.required' => "Il titolo è obbligatorio",
-            'category.required'=> "La categoria è obbligatoria",
             'body.require'=> "L'articolo è obbligatorio"
         ];
     }

@@ -18,7 +18,7 @@
                         <div class="h-100 p-5 text-bg-dark rounded-3">
                             <h2>Amministra Articoli</h2>
                             <a href="{{route('articles.index')}}">
-                                <button class="btn btn-outline-light" type="button">Vedi Libri</button>
+                                <button class="btn btn-outline-light" type="button">Vedi Articoli</button>
                             </a>
                         </div>
                     </div>
@@ -26,9 +26,9 @@
                         <div
                         class="h-100 p-5 bg-body-tertiary border rounded-3">
                         <h2>Gestione Categorie</h2>
-                        
-                        <button class="btn btn-outline-secondary"
-                        type="button">Vedi categorie</button>
+                        <a href="{{route('categories.index')}}">
+                            <button class="btn btn-outline-secondary" type="button">Vedi categorie</button>
+                        </a>
                     </div>
                 </div>
                 <div class="col-md-4">

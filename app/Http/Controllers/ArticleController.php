@@ -7,6 +7,7 @@ use App\Http\Requests\StoreArticleRequest;
 use App\Http\Requests\UpdateArticleRequest;
 use App\Mail\CreateArticleMail;
 use App\Mail\UpdateArticleMail;
+use App\Models\Category;
 use App\Models\User;
 use Illuminate\Support\Facades\Mail;
 
@@ -31,7 +32,8 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return view('articles.create');
+        $categories=Category::all();
+        return view('articles.create',compact('categories'));
     }
 
     /**
@@ -47,7 +49,6 @@ class ArticleController extends Controller
 
         $article = Article::create([
             "title" => $request->title,
-            'category' => $request->category,
             "body" =>  $request->body,
             "status" =>  $request->status,
             'user_id' => auth()->user()->id,
@@ -55,6 +56,7 @@ class ArticleController extends Controller
             'image' => $path_image
         ]);
 
+        $article->categories()->attach($request->categories);
         Mail::to(auth()->user()->email)->send(new CreateArticleMail($article));
         session()->flash('success', 'Articolo creato con successo');
         return redirect()->route('articles.index');
@@ -73,8 +75,13 @@ class ArticleController extends Controller
      */
     public function edit(Article $article)
     {
+        if($article->user_id !== auth()->user()->id)
+        {
+            abort(403);
+        }
+        $categories=Category::all();
         $users = User::all();
-        return view('articles.edit', compact('users','article'));
+        return view('articles.edit', compact('users','article','categories'));
     }
 
     /**
@@ -89,12 +96,12 @@ class ArticleController extends Controller
         }
             $article->update([
                 "title" => $request->title,
-                'category' => $request->category,
                 "body" =>  $request->body,
                 'user_id' => $request->user_id,
                 "status" =>  $request->status,
                 'image' => $path_image
             ]);
+            $article->categories()->sync($request->categories);
             Mail::to(auth()->user()->email)->send(new UpdateArticleMail($article));
             session()->flash('success', "L'articolo è stato aggiornato con successo");
             return redirect()->route('articles.index');
@@ -104,7 +111,8 @@ class ArticleController extends Controller
      * Remove the specified resource from storage.
      */
     public function destroy(Article $article)
-    {
+    {   
+        $article->categories()->detach();
         $article->delete();
         session()->flash('success', "L'articolo è cancellato con successo");
         return redirect()->route('articles.index');

@@ -25,7 +25,11 @@
             </div>
             <div class="row gx-5">
                 @for ($i=0;$i<3;$i++)
+                @if (count($articles)> $i)
                 <x-card-article :article=$articles[$i] />     
+                    @else
+                    <h1>Articolo non disponibili</h1>
+                @endif
                 @endfor
             </div>
         </div>

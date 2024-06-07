@@ -20,6 +20,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'github_id',
+        'github_token',
+        'github_refresh_token'
     ];
 
     /**
@@ -48,5 +51,10 @@ class User extends Authenticatable
     public function articles()
     {
         return $this->hasMany(Article::class);
+    }
+
+    public function providers()
+    {
+        return $this->belongsTo(Provider::class);
     }
 }

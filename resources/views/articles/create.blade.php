@@ -20,14 +20,6 @@
                     <p class="text-danger"> {{ $message }} </p>
                     @enderror
                     <div class="form-floating mb-3">
-                        <input class="form-control" id="category" value="{{old('category')}}"
-                        name="category" type="text">
-                        <label for="category">Categoria</label>
-                    </div>
-                    @error('category')
-                    <p class="text-danger"> {{ $message }} </p>
-                    @enderror
-                    <div class="form-floating mb-3">
                         <textarea class="form-control p-5" id="body"
                         name="body">{{old('body')}}</textarea>
                         <label for="body">Testo Articolo</label>
@@ -35,6 +27,19 @@
                     @error('body')
                     <p class="text-danger"> {{ $message }} </p>
                     @enderror
+                    <div class="form-control mb-3">
+                        @forelse ($categories as $category)
+                        <div class="form-check">
+                            <input class="form-check-input"
+                                type="checkbox" id="categories_id"
+                                name="categories[]" value="{{$category->id}}">
+                            <label class="form-check-label"
+                                for="categories_id">{{$category->name}}</label>
+                        </div>  
+                        @empty
+                           Nessun tag disponibile 
+                        @endforelse
+                    </div>
                     <div class="form-floating mb-3">
                         <img width="200" src="" class="img-responsive">
                         <input class="form-control" id="image" name="image" value type="file">
