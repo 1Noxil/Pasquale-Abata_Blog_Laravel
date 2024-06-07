@@ -238,14 +238,14 @@ body{
   color: black;
 }
 
-.social_list .social_twitch{
-  border: solid 1px #6441a5;
+.social_list .social_google{
+  border: solid 1px #d50000;
   transition: 200ms;
-  color: #6441a5;
+  color: #d50000;
 }
 
-.social_list .social_twitch:hover{
-  background-color: #6441a5;
+.social_list .social_google:hover{
+  background-color: #d50000;
   color: white;
 }
 

@@ -16,8 +16,8 @@
                         <div class="order-1 order-md-2 col-12 col-md-6">
                             <ul class="social_list">
                                 <li>
-                                    <a class="social_twitch" href="">
-                                        <i class="bi bi-twitch"></i>
+                                    <a class="social_google" href="{{route('social.redirect',['social'=> 'google'])}}">
+                                        <i class="bi bi-google"></i>
                                     </a>
                                 </li>
                                 <li>

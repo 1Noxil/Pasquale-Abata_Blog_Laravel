@@ -16,17 +16,17 @@
                     <div class="order-1 order-md-2 col-12 col-md-6">
                         <ul class="social_list">
                             <li>
-                                <a class="social_twitch" href="">
-                                    <i class="bi bi-twitch"></i>
+                                <a class="social_google" href="{{route('social.redirect',['social'=> 'google'])}}">
+                                    <i class="bi bi-google"></i>
                                 </a>
                             </li>
                             <li>
-                                <a class="social_github" href="">
+                                <a class="social_github" href="{{route('social.redirect',['social'=> 'github'])}}">
                                     <i class="bi bi-github"></i>
                                 </a>
                             </li>
                             <li>
-                                <a class="social_discord" href="">
+                                <a class="social_discord" href="{{route('social.redirect',['social'=> 'discord'])}}">
                                     <i class="bi bi-discord"></i>
                                 </a>
                             </li>

@@ -18,11 +18,22 @@ return [
     'client_secret' => env('GITHUB_CLIENT_SECRET'),
     'redirect' => '/auth/github/callback',
 ],
-'discord' => [
+    'discord' => [
         'client_id' => env('DISCORD_CLIENT_ID'),
         'client_secret' => env('DISCORD_CLIENT_SECRET'),
         'redirect' => '/auth/discord/callback',
     ],
+    'twitch' => [    
+  'client_id' => env('TWITCH_CLIENT_ID'),  
+  'client_secret' => env('TWITCH_CLIENT_SECRET'),  
+  'redirect' => '/auth/twitch/callback' 
+],
+    'google' => [    
+  'client_id' => env('GOOGLE_CLIENT_ID'),  
+  'client_secret' => env('GOOGLE_CLIENT_SECRET'),  
+  'redirect' => '/auth/google/callback' 
+    ],
+
 
     'postmark' => [
         'token' => env('POSTMARK_TOKEN'),
