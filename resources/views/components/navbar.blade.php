@@ -26,23 +26,37 @@
               <i class='bx bxs-dashboard'></i>
             </a>
           </li>
-          <li>
-            <form action="{{route('logout')}}" method="post"> 
-              @csrf
-                <button type="submit" class="btn btn-transparent">
-                  <i class='bx bx-log-out bx-rotate-180' ></i>
-                </button>
-            </form> 
-          </li>
+          <div class="btn-group">
+            <button class="btn btn-transparent dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <img class="avatar rounded-circle" src="{{auth()->user()->providers[0]->social_avatar ?? ""}}" alt="">
+            </button>
+            <ul class="dropdown-menu dropdown-menu-end">
+              <li>
+                <a href="{{route('profile',['user'=> auth()->user()->id])}}" class="d-flex gap-1">
+                  <i class="bi bi-gear-wide-connected"></i>
+                  <p class="m-0">Profilo</p>
+                </a>
+              </li>
+              <li>
+                <form action="{{route('logout')}}" method="post"> 
+                  @csrf
+                    <button type="submit" class="btn btn-transparent d-flex text-danger gap-1">
+                      <i class=" bi bi-door-closed-fill"></i>
+                      <p>Esci</p>
+                    </button>
+                </form> 
+              </li>
+            </ul>
+          </div>
         @else
-        <li>
+        <li class="me-3">
           <a href="{{route('register')}}">
             <button class="button">Registrati</button>
           </a>
         </li>
-        <li>
+        <li class="me-2">
           <a href="{{route('login')}}">
-            <i class='bx bx-log-in bx-rotate-180' ></i>
+            <i class="txt_gray bi bi-person-circle"></i>
           </a>
         </li>
         @endauth

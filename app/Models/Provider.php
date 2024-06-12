@@ -8,10 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Provider extends Model
 {
     use HasFactory;
-    protected $fillable=['social-id','social-name','social-avatar','email','user_id'];
+    protected $fillable=['social_id','social_name','social_avatar','email','user_id'];
 
-    public function users()
+    public function user()
     {
-        return $this->hasMany(User::class);
+        return $this->belongsTo(User::class);
     }
 }

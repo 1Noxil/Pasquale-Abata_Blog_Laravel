@@ -4,7 +4,7 @@
             <div class="col-12">
             </div>
             <div class="col-12 text-center mb-3">
-                <h3> Crea un nuovo Articolo</h3>
+                <h3> Crea una nuova Categoria</h3>
             </div>
             <div class="col-lg-8 col-xl-6 border p-5 rounded">
                 <form action="{{route('categories.store')}}" method="POST">

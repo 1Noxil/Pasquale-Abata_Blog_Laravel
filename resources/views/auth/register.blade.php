@@ -37,6 +37,7 @@
                 <!-- FORM -->
                 <div class="form-login mt-5">
                     <form action="{{route('register')}}" method="POST">
+                        @csrf
                         <div class="mb-3">
                             <label for="name" class="form-label fw-bold">Username</label>
                             <div class="d-flex align-items-center">

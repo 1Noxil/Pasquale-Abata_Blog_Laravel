@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('providers', function (Blueprint $table) {
             $table->id();
-            $table->string('social-id')->nullable();
+            $table->string('social_id')->nullable();
             $table->string('email')->nullable();
-            $table->string('social-name')->nullable();
-            $table->string('social-avatar')->nullable();
+            $table->string('social_name')->nullable();
+            $table->string('social_avatar')->nullable();
             $table->foreignId('user_id')->constrained();
             $table->timestamps();
         });

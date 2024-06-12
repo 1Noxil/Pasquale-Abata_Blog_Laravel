@@ -22,11 +22,7 @@ class ProviderController extends Controller
         $socialUser = Socialite::driver($social)->user();
         if(!User::where('email',$socialUser->email)->first()){
             
-            $user= User::updateOrCreate([
-                'name' => $socialUser->name,
-                'email' => $socialUser->email,
-                'password' => Hash::make($socialUser->token),
-            ],[
+            $user= User::create([
                 'name' => $socialUser->name,
                 'email' => $socialUser->email,
                 'password' => Hash::make($socialUser->token),   
@@ -40,17 +36,12 @@ class ProviderController extends Controller
         
         Provider::updateOrCreate([
             'email' => $socialUser->email,
-            'social-id' => $socialUser->id,
-            'social-name' => $social,
-            'social-avatar' => $socialUser->avatar,
-            'user_id' => $user->id
         ], [
             'email' => $socialUser->email,
-            'social-id' => $socialUser->id,
-            'social-name' => $social,
-            'social-avatar' => $socialUser->avatar,
+            'social_id' => $socialUser->id,
+            'social_name' => $social,
+            'social_avatar' => $socialUser->avatar,
             'email' => $socialUser->email,
-            'password' => Hash::make($socialUser->token),
             'user_id' => $user->id
         ]);
         

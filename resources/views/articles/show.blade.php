@@ -21,7 +21,7 @@
                             <p>{{$article->category}}</p>
                         </div>
                     </div>
-                    <div class="col-12 txt__custom">
+                    <div class="col-12 txt__custom mt-5 pt-5">
                         <p class="bolder">
                             {{$article->body}}
                         </p>

@@ -55,6 +55,6 @@ class User extends Authenticatable
 
     public function providers()
     {
-        return $this->belongsTo(Provider::class);
+        return $this->hasMany(Provider::class);
     }
 }

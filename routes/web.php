@@ -17,6 +17,8 @@ Route::middleware(['auth'])->group(function(){
     Route::get('/authors',[AuthorController::class,'index'])->name('authors.index');
     Route::get('/authors/{user}',[AuthorController::class,'show'])->name('authors.show');
     Route::resource('categories', CategoryController::class);
+    Route::get('/profile/{user}',[PublicController::class,'profile'])->name('profile');
+    Route::put('/profile/update',[PublicController::class, 'update_profile'])->name('profile.update');
 });
 
 
